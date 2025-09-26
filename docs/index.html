@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Planterra | Plant Today, Protect Tomorrow</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        
+        <header>
+            <nav>
+                <a href="#home" class="logo">Planterra</a>
+                <ul>
+                <li><a href="#guide">Plant Guide</a></li>
+                <li><a href="#soil-info">Soil Hub</a></li>
+                <li><a href="#virtual-forest">Virtual Forest</a></li>
+                <li><a href="#event">Community Event</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#pledge">Pledge Wall</a></li>
+            </ul>
+            <div class="header-toggles">
+                <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+                <button id="sound-toggle" aria-label="Toggle sound"><i class="fas fa-volume-mute"></i></button>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home">
+            <div class="hero-content">
+                <h1>Plant Today, Protect Tomorrow</h1>
+                <p>Discover the vital connection between plants and soil, and join a global movement to restore our Earth.</p>
+                <a href="#guide" class="cta-button">Start Exploring</a>
+            </div>
+        </section>
+        <section id="event">
+            <h2>Community Plantation Day</h2>
+            <img src="./image.png" alt="Community tree plantation event banner" class="event-banner">
+            <div class="event-details">
+                <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> October 5, 2025</p>
+                <p><i class="fas fa-clock"></i> <strong>Time:</strong> 9:00 AM - 1:00 PM</p>
+                <p><i class="fas fa-map-marker-alt">
+                    <a href="https://maps.app.goo.gl/aMbyHdRCLnpWvPBp9" target="_blank">
+                    </i> <strong>Location:</strong> Vetal Tekdi, Pune</p>
+
+                    </a>
+            </div>
+            
+            <div id="event-pre-content">
+                <p class="section-subtitle">Join us in making Pune greener! The event starts in:</p>
+                <div id="countdown-timer">
+                    <div><span id="days">00</span>Days</div>
+                    <div><span id="hours">00</span>Hours</div>
+                    <div><span id="minutes">00</span>Minutes</div>
+                    <div><span id="seconds">00</span>Seconds</div>
+                </div>
+        
+                <div class="event-container">
+                    <div class="event-registration">
+                        <h3><i class="fas fa-edit"></i> Register Now</h3>
+                        <form id="event-registration-form">
+                            <input type="text" id="participant-name" placeholder="Your Name" required>
+                            <input type="email" id="participant-contact" placeholder="Your Email" required>
+                            <input type="number" id="trees-pledged" placeholder="Trees you'll plant (e.g., 5)" min="1" required>
+                            <button type="submit">Join the Event</button>
+                        </form>
+                    </div>
+                    <div class="event-progress">
+                        <h3><i class="fas fa-bullseye"></i> Our Collective Goal</h3>
+                        <div class="community-goal">
+                            <div id="community-progress-bar"></div>
+                            <span id="community-progress-text">0 / 500 trees</span>
+                        </div>
+                        <h4>Registered Participants</h4>
+                        <ul id="participant-list"></ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div id="event-post-content" class="hide">
+                 <p class="section-subtitle">Thank you for making our event a huge success! Here are some highlights.</p>
+                 <div class="gallery-grid">
+                    <img src="https://images.unsplash.com/photo-1617953141905-657199c3a329?q=80&w=400" alt="Planting trees">
+                    <img src="https://images.unsplash.com/photo-1523741543343-2f0804427324?q=80&w=400" alt="Group of volunteers">
+                    <img src="https://images.unsplash.com/photo-1621984827253-813c9a6390a3?q=80&w=400" alt="Happy volunteers">
+                    <img src="https://images.unsplash.com/photo-1624446219090-4e73950a3f9e?q=80&w=400" alt="Watering saplings">
+                 </div>
+            </div>
+        </section>
+
+        <section id="guide">
+            <h2>Interactive Plant Guide</h2>
+            <p class="section-subtitle">Find the perfect plants for your climate. Click on a card to learn more!</p>
+            <div class="guide-controls">
+                <label for="climate-select">Select Your Climate Zone:</label>
+                <select id="climate-select">
+                    <option value="all">All Climates</option>
+                    <option value="tropical">Tropical</option>
+                    <option value="dry">Dry / Arid</option>
+                    <option value="temperate">Temperate</option>
+                </select>
+            </div>
+            <div id="plant-cards-container" class="card-grid">
+                </div>
+        </section>
+
+        <section id="soil-info">
+            <h2>The Living Soil Hub</h2>
+            <p class="section-subtitle">Understand the foundation of life beneath our feet.</p>
+            <div class="soil-grid">
+                <div class="soil-card soil-types">
+                    <h3><i class="fas fa-layer-group"></i> Types of Soil</h3>
+                    <ul class="soil-visual-list">
+                        <li>
+                            <img src="https://www.outdoorguide.com/img/gallery/why-you-should-consider-loamy-soil-for-your-garden/intro-1750184933.jpg" alt="Loamy soil">
+                            <div><strong>Loamy:</strong> The gardener's best friend. Rich, fertile, and well-draining.</div>
+                        </li>
+                        <li>
+                            <img src="https://www.thespruce.com/thmb/gLlYEJlSvb2lE_DqBy0jFfS3AlE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SPR-understanding-and-improving-clay-soil-2539857-01-6a1c7bb45c6e4eb4985798da8591caf1.jpg" alt="Clay soil">
+                            <div><strong>Clayey:</strong> Sticky and dense. Holds water well but can become compacted.</div>
+                        </li>
+                        <li>
+                            <img src="https://www.shutterstock.com/image-photo/small-green-plant-growing-on-600nw-2448407299.jpg" alt="Dry soil">
+                            <div><strong>Arid:</strong> Common in dry regions. Often sandy with low organic matter.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="soil-card soil-threats">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Major Threats</h3>
+                    <div class="threat-item">
+                        <span>Deforestation</span>
+                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="threat-item">
+                        <span>Soil Erosion</span>
+                        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="threat-item">
+                        <span>Chemical Pollution</span>
+                        <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+                <div class="soil-card soil-solutions">
+                    <h3><i class="fas fa-seedling"></i> Protection Practices</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <strong>Cover Cropping:</strong> Plant crops to cover soil between main harvests.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Contour Farming:</strong> Plow along the contours of the land to prevent runoff.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Composting:</strong> Enrich soil naturally with organic waste.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Crop Rotation:</strong> Prevent nutrient depletion by changing crops seasonally.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="virtual-forest">
+            <h2>Our Virtual Forest</h2>
+            <p class="section-subtitle">Click on an empty patch to plant a tree. Let's grow a forest together!</p>
+            <div class="forest-stats">
+                <p>Trees Planted by the Community: <strong id="tree-counter">0</strong></p>
+            </div>
+            <div id="forest-grid">
+                </div>
+        </section>
+
+
+        <section id="quiz">
+            <h2>Are You a Soil Saver?</h2>
+            <p class="section-subtitle">Test your knowledge with this quick quiz!</p>
+            <div id="quiz-container">
+                <div id="question-container">
+                    <p id="question-text">Question goes here...</p>
+                    <div id="answer-buttons" class="btn-grid"></div>
+                </div>
+                <div id="quiz-results" class="hide">
+                    <h3 id="results-title"></h3>
+                    <p id="results-score"></p>
+                    <button id="restart-quiz-btn">Try Again</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="pledge">
+            <h2>Take the Personal Pledge</h2>
+            <p class="section-subtitle">Can't make the event? Commit to protecting our soil in your own way.</p>
+            <div class="pledge-container">
+                <form id="pledge-form">
+                    <input type="text" id="pledge-name" placeholder="Your Name" required>
+                    <textarea id="pledge-message" placeholder="e.g., 'I pledge to compost my kitchen waste.'" required></textarea>
+                    <button type="submit">Make My Pledge</button>
+                </form>
+                <div id="pledge-wall">
+                    <h3>Community Pledges</h3>
+                    <ul id="pledge-list"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TerraNova. An initiative for a greener planet.</p>
+    </footer>
+
+    <button id="chatbot-toggle" aria-label="Open Chatbot">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+    
+    <audio id="nature-sound" loop>
+        <source src="https://www.soundjay.com/nature/sounds/forest-01.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="event-reminder-banner" class="hide">
+        <p>Don't forget! Our Community Plantation Day is just around the corner. <a href="#event">Register now!</a></p>
+        <button id="close-reminder-btn">&times;</button>
+    </div>
+
+</body>
+</html>

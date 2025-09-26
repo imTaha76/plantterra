@@ -1,0 +1,236 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-green: #4A7C59;
+    --dark-green: #3D6B4B;
+    --light-green: #A3D9B1;
+    --earth-brown: #8B4513;
+    --dark-brown: #5a2d0c;
+    --bg-color: #F4F1DE;
+    --text-color: #3D405B;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --border-radius: 12px;
+}
+
+body.dark-mode {
+    --primary-green: #58A670;
+    --dark-green: #A3D9B1;
+    --light-green: #4A7C59;
+    --earth-brown: #D2B48C;
+    --dark-brown: #8B4513;
+    --bg-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --card-bg: #34495e;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+/* --- Reusable Components --- */
+section {
+    min-height: 100vh;
+    padding: 100px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 700; }
+h2 { font-size: 2.8rem; margin-bottom: 1rem; color: var(--primary-green); font-weight: 600; }
+h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--dark-green); }
+body.dark-mode h3 { color: var(--light-green); }
+
+.section-subtitle { font-size: 1.2rem; max-width: 700px; margin-bottom: 3rem; color: var(--text-color); opacity: 0.8; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; width: 100%; }
+.hide { display: none !important; }
+
+/* --- Header & Navigation (Main & Detail Page) --- */
+header {
+    position: fixed;
+    top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s;
+}
+body.dark-mode header { background: rgba(44, 62, 80, 0.2); }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 8%; height: 70px; }
+.logo { font-size: 1.8rem; font-weight: 700; text-decoration: none; color: var(--primary-green); }
+nav ul { list-style: none; display: flex; gap: 2.5rem; }
+nav ul li a { text-decoration: none; color: var(--text-color); font-weight: 500; transition: color 0.3s; position: relative; padding-bottom: 5px; }
+nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background-color: var(--primary-green); transition: width 0.3s ease-in-out; }
+nav ul li a:hover, nav ul li a:focus { color: var(--primary-green); }
+nav ul li a:hover::after, nav ul li a:focus::after { width: 100%; }
+.header-toggles button { background: none; border: none; color: var(--text-color); font-size: 1.2rem; cursor: pointer; margin-left: 1rem; transition: color 0.3s, transform 0.3s; }
+.header-toggles button:hover { color: var(--primary-green); transform: scale(1.2); }
+
+/* --- Section 1: Hero --- */
+#home { background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') no-repeat center center/cover; color: white; }
+#home::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 0; }
+.hero-content { z-index: 1; max-width: 800px; }
+.hero-content h1 { text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+.hero-content p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
+.cta-button { display: inline-block; padding: 12px 30px; background-color: var(--light-green); color: var(--dark-green); text-decoration: none; font-weight: 600; border-radius: 50px; transition: transform 0.3s, background-color 0.3s; }
+.cta-button:hover { transform: translateY(-3px); background-color: #fff; }
+
+/* --- Section 2: Plant Guide --- */
+.guide-controls { margin-bottom: 2rem; background: var(--card-bg); padding: 1rem 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); display: flex; align-items: center; gap: 1rem; }
+#climate-select { padding: 0.5rem 1rem; font-size: 1rem; border: 2px solid var(--primary-green); border-radius: 8px; background-color: var(--bg-color); color: var(--text-color); cursor: pointer; }
+.plant-card-link { text-decoration: none; color: inherit; }
+.plant-card { background: var(--card-bg); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow); text-align: left; transition: transform 0.3s, box-shadow 0.3s; }
+.plant-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); }
+body.dark-mode .plant-card:hover { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); }
+.plant-card img { width: 100%; height: 200px; object-fit: cover; }
+.plant-card-content { padding: 1.5rem; }
+.plant-card-content h3 { margin-top: 0; }
+.plant-card p { font-size: 0.9rem; margin-bottom: 1rem; }
+.plant-card .benefit { font-weight: 600; color: var(--earth-brown); }
+
+/* --- STYLES FOR PLANT-DETAIL.HTML --- */
+.detail-page-body { background-color: var(--bg-color); }
+.detail-header { position: static; background: var(--card-bg); box-shadow: var(--shadow); }
+.back-button { background-color: var(--primary-green); color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 500; transition: background-color 0.3s; }
+.back-button:hover { background-color: var(--dark-green); }
+.back-button i { margin-right: 8px; }
+
+#plant-detail-main { padding-top: 0; }
+#plant-banner { height: 60vh; width: 100%; background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center; text-align: center; position: relative; color: white; }
+#plant-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
+#plant-banner h1 { z-index: 1; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+.plant-info-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: -80px auto 4rem auto; padding: 0 2rem; position: relative; z-index: 2; }
+.detail-card { background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); text-align: left; }
+.detail-card h3 { display: flex; align-items: center; gap: 0.8rem; }
+.detail-card h3 i { color: var(--primary-green); }
+
+/* --- Section 3: Soil Info --- */
+.soil-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; width: 100%; }
+.soil-card { background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); text-align: left; }
+.soil-card h3 { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
+.soil-card ul { list-style: none; }
+.soil-visual-list li { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.soil-visual-list img { width: 80px; height: 80px; object-fit: cover; border-radius: var(--border-radius); }
+.soil-solutions ul li { margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+.soil-solutions .fa-check-circle { color: var(--primary-green); margin-top: 4px; }
+.threat-item { margin-bottom: 1.5rem; } .threat-item span { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.progress-bar { width: 100%; height: 15px; background-color: var(--bg-color); border-radius: 10px; overflow: hidden; }
+.progress { height: 100%; background-color: var(--earth-brown); border-radius: 10px; animation: animateProgress 2s ease-out forwards; }
+@keyframes animateProgress { from { width: 0; } }
+
+/* --- Section 4: Virtual Forest --- */
+#virtual-forest { background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') no-repeat center center/cover; }
+#virtual-forest h2, #virtual-forest .section-subtitle, #virtual-forest .forest-stats p { color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+#forest-stats { margin-bottom: 2rem; font-size: 1.2rem; }
+#tree-counter { color: var(--light-green); font-size: 1.5rem; }
+#forest-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 10px; width: 100%; max-width: 800px; margin: auto; background: rgba(0,0,0,0.2); padding: 10px; border-radius: var(--border-radius); }
+.soil-patch { width: 100%; padding-bottom: 100%; background-color: var(--dark-brown); border-radius: 5px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; position: relative; }
+.soil-patch:hover { background-color: #7a3d1a; transform: scale(1.1); }
+.soil-patch.planted { background-color: var(--dark-brown); cursor: default; }
+.soil-patch.planted:hover { transform: none; }
+.soil-patch.planted::after { content: '🌳'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2vw; animation: growTree 0.5s ease-out; }
+@keyframes growTree { from { transform: translate(-50%, -50%) scale(0); } to { transform: translate(-50%, -50%) scale(1); } }
+
+/* --- Section 5: Community Event --- */
+.event-banner { width: 100%; max-width: 1000px; height: 250px; object-fit: cover; border-radius: var(--border-radius); box-shadow: var(--shadow); margin-bottom: 2rem; }
+.event-details { display: flex; gap: 2rem; background-color: var(--card-bg); padding: 1rem 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); margin-bottom: 2rem; }
+#countdown-timer { display: flex; gap: 2rem; margin-bottom: 3rem; }
+#countdown-timer div { background: var(--card-bg); padding: 1rem 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+#countdown-timer span { font-size: 3rem; font-weight: 700; color: var(--primary-green); display: block; }
+.event-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; width: 100%; max-width: 1200px; text-align: left; }
+.event-registration, .event-progress { background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+#event-registration-form input { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; background-color: var(--bg-color); color: var(--text-color); }
+#event-registration-form button { padding: 0.8rem; background-color: var(--primary-green); color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s; }
+.community-goal { width: 100%; height: 30px; background-color: var(--bg-color); border-radius: 15px; margin: 1rem 0 2rem 0; position: relative; overflow: hidden; }
+#community-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--light-green), var(--primary-green)); border-radius: 15px; transition: width 0.5s ease-in-out; }
+#community-progress-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--dark-brown); font-weight: 600; }
+#participant-list { list-style: none; height: 200px; overflow-y: auto; padding-right: 10px; }
+
+/* --- Section 6: Quiz --- */
+#quiz { background: url('https://images.unsplash.com/photo-1492496913980-501348b61469') no-repeat center center/cover; color: white; }
+#quiz h2, #quiz .section-subtitle { text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+#quiz-container { background-color: var(--card-bg); padding: 2rem 3rem; border-radius: var(--border-radius); box-shadow: var(--shadow); width: 100%; max-width: 700px; color: var(--text-color); }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.btn { padding: 1rem; border: 2px solid var(--light-green); background-color: transparent; color: var(--text-color); font-size: 1rem; border-radius: 8px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
+#restart-quiz-btn { padding: 10px 20px; font-size: 1rem; background-color: var(--primary-green); color: white; border: none; border-radius: 8px; cursor: pointer; }
+
+/* --- Section 7: Pledge Wall --- */
+#pledge { background: url('https://images.unsplash.com/photo-1465146633011-14f18f8d2399') no-repeat center center/cover; }
+#pledge h2, #pledge .section-subtitle { color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+.pledge-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; width: 100%; max-width: 1100px; text-align: left; }
+#pledge-form, #pledge-wall { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.2); }
+#pledge-form input, #pledge-form textarea { width: 100%; padding: 0.8rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; background-color: rgba(0,0,0,0.2); color: white; }
+#pledge-form button { padding: 0.8rem; background-color: var(--light-green); color: var(--dark-green); border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+
+/* --- Footer & Reminder Banner --- */
+footer { text-align: center; padding: 2rem; background-color: var(--dark-brown); color: #f4f1de; }
+#event-reminder-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: var(--primary-green); color: white; padding: 1rem 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); display: flex; align-items: center; gap: 2rem; z-index: 1001; }
+#close-reminder-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    h1 { font-size: 3rem; } h2 { font-size: 2.2rem; }
+    nav ul { display: none; }
+    .event-container, .pledge-container { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    section { padding: 80px 5%; }
+    .btn-grid { grid-template-columns: 1fr; }
+    .plant-info-container { grid-template-columns: 1fr; margin-top: -60px; }
+}
+<<<<<<< HEAD:version 3/style.css
+
+.hero-countdown-container { margin-top: 2.5rem; background: rgba(0,0,0,0.25); padding: 1rem; border-radius: var(--border-radius); backdrop-filter: blur(5px); }
+#countdown-timer { display: flex; gap: 1rem; justify-content: center; }
+#countdown-timer div { color: var(--text-light); text-align: center; }
+#countdown-timer span { font-size: 2.5rem; color: var(--text-light); font-weight: 700; }
+
+/* --- Chatbot Toggle --- */
+#chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-green);
+    color: var(--text-light);
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+#chatbot-toggle:hover {
+    transform: scale(1.1);
+    background-color: var(--dark-green);
+}
+a{
+    text-decoration:none;
+    color:inherit;
+   
+}
+=======
+>>>>>>> 20f230ffbe96be24408215005e5861b254bb9117:docs/style.css
